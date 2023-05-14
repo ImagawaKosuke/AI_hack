@@ -1,0 +1,29 @@
+.background{
+    position: relative;
+    width: 100%;
+    background-color: azure;
+}
+
+.fontdesign{
+    font-family: Comic Sans MS;
+}
+
+.inputsentence{
+    padding : 20px ;
+}
+
+.buttondesign2 {
+    width: 30%;
+    height: 30%;
+ }
+
+.buttondesign {
+    position: absolute;
+    width: 550px;
+    height: 130px;
+ }
+
+.buttondesign input {
+    width: 30%;
+    height: 30%;
+}

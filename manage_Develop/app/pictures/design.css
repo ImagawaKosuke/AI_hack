@@ -1,0 +1,24 @@
+.background{
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.title{
+    position: absolute;
+    top: 40%;
+    width: 100%;
+}
+
+.buttondesign {
+    position: absolute;
+    width: 458px;
+    height: 138px;
+    top: 90%;
+    left: 33%;
+ }
+
+.buttondesign input {
+    width: 70%;
+    height: 70%;
+}
