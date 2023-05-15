@@ -4,26 +4,115 @@
   <!-- あってもなくても動くけど入れといた方がいいメタタグ -->
   <!-- 文字をutf-8に -->
     <meta charset="utf-8">
-    <title>Food Recommend</title>
+    <title>Delicious Recommend</title>
   <!-- どのデバイスで見ても見え方を一緒にする = レスポンシブデザイン -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="../pictures/appdesign.css" rel="stylesheet" />
+    <link rel="icon" href="../pictures/logo.png">
+    
   </head>
+  <body>
+      <form action="/" method="get">
+        <input type="image" value='back!' src="../pictures/logo.png" alt="Delicious Recommend" width="5%" height="5%">
+        <input type="image" value='back!' src="../pictures/Delicious Recommend.png" alt="Delicious Recommend" width="50%" height="50%"> 
+      </form>
+  </body>
   <body>
     <div class="background">
       <div class="title">
         <img src="../pictures/Title_number.png" width = "1300">
       </div>
-      <div class="fontdesign">
+      <p>
+        <div class="fontdesign">
+          <div= class="inputsentence2">
+            お客様のリクエストに合わせた新しい形のレストランを探してくれます。<br>
+            例えば、このようなリクエストもすることができます。
+            <p>
+              <li>
+                レストランに行く目的
+              </li>
+              <li>
+                食べたいもの
+              </li>
+              <li>
+                お客様の気分
+              </li>
+              <li>
+                値段
+              </li>
+              <li>
+                アレルギー情報 など
+              </li>
+            </p>
+            これらのリクエストからお客様の好みに合ったレストランや居酒屋を探して、素敵な食事を楽しんでください！
+          </div>
+        </p>
         <div class="inputsentence">
-          入力をしてください
+          <b>レストランを検索する</b>
         </div>
       </div>
-      <form>
-        <input type="text" name="input">
-        <button type="image" formmethod="post">検索</button></p>
-        <p>{{output}}</p>
-      </form>
+      <p>
+        <div class="background">
+          <form>
+            <p>
+              <ul>
+                <div>
+                  場所を探す
+                  <input type="text" name="place" placeholder="場所" required><br>
+                </div>
+                <div>
+                  食べたいものを入力する
+                  <input type="text" name="food" placeholder="食べ物" required><br>
+                </div>
+                <div>
+                  人数を選ぶ
+                  <select name="number" required>
+                    <option selected value="1人">1人</option>
+                    <option value="2人">2人</option>
+                    <option value="3-5人">3~5人</option>
+                    <option value="6~8人">6~8人</option>
+                    <option value="9~12人">9~12人</option>
+                    <option value="12~20人">12~20人</option>
+                    <option value="21人以上">21人以上</option>
+                  </select><br>
+                </div>
+                <div>
+                  何をしたいですか?
+                  <select name="purpose" required>
+                    <option selected value="ランチ">ランチ</option>
+                    <option value="ディナー">ディナー</option>
+                    <option value="飲み会">飲み会</option>
+                    <option value="打ち上げ">打ち上げ</option>
+                    <option value="同窓会">同窓会</option>
+                    <option value="合格祝い">合格祝い</option>
+                    <option value="結婚祝い">結婚祝い</option>
+                    <option value="その他">その他</option>
+                  </select><br>
+                </div>
+              </ul>
+            </p>
+            <p>
+              <b>オプション</b>
+              <input type="text" name="fee" placeholder="価格">
+              <select name="feeling">
+                <option selected value="特になし">特になし</option>
+                <option value="がっつり食べたい">がっつり食べたい</option>
+                <option value="あっさりとした感じ">あっさりとした感じ</option>
+                <option value="ダイエットしている">ダイエットしている</option>
+                <option value="9~12人">9~12人</option>
+                <option value="12~20人">12~20人</option>
+                <option value="21人以上">21人以上</option>
+              </select>
+              <input type="text" name="allergy" placeholder="アレルギー">
+            </p>
+            <button type="image" formmethod="post">検索</button></p>
+          </form>
+        </div>
+        <p>
+          {{info}}<br>
+          {{ output}}
+        </p>
+      </p>
     </div>
     
   <!-- ボタンを押すと、/に飛ぶ -->

@@ -9,13 +9,19 @@
 }
 
 .inputsentence{
-    padding : 20px ;
+    font-size: 30;
+}
+
+.inputsentence2{
+    text-align: center;
+    font-size: 40;
 }
 
 .buttondesign2 {
     width: 30%;
     height: 30%;
  }
+ 
 
 .buttondesign {
     position: absolute;
