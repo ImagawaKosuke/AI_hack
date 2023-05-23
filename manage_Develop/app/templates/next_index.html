@@ -18,13 +18,20 @@
       </form>
   </body>
   <body>
+    <!-- ボタンを押すと、/に飛ぶ -->
     <div class="background">
-      <div class="title">
-        <img src="../pictures/Title_number.png" width = "1300">
-      </div>
+      <form action="/" method="get">
+        <div class="buttondesign">
+          <input type="image" value='back!' src="../pictures/Button2.png">
+        </div>
+      </form>
+    </div>
+  </body>
+  <body>
+    <div class="background">
       <p>
         <div class="fontdesign">
-          <div= class="inputsentence2">
+          <div class="inputsentence2">
             お客様のリクエストに合わせた新しい形のレストランを探してくれます。<br>
             例えば、このようなリクエストもすることができます。
             <p>
@@ -41,88 +48,224 @@
                 値段
               </li>
               <li>
-                アレルギー情報 など
+                画像を用いたレコメンド
               </li>
             </p>
             これらのリクエストからお客様の好みに合ったレストランや居酒屋を探して、素敵な食事を楽しんでください！
           </div>
         </p>
-        <div class="inputsentence">
-          <b>レストランを検索する</b>
-        </div>
-      </div>
+        
       <p>
-        <div class="background">
-          <form>
+          <form enctype="multipart/form-data">
             <p>
               <ul>
-                <div>
-                  場所を探す
-                  <input type="text" name="place" placeholder="場所" required><br>
+                <div class="inputsentence">
+                  <b>レストランを検索する</b>
                 </div>
                 <div>
-                  食べたいものを入力する
-                  <input type="text" name="food" placeholder="食べ物" required><br>
+                  駅名を入力する
+                  <input type="text" name="station" placeholder="駅名" required><br>
                 </div>
                 <div>
-                  人数を選ぶ
-                  <select name="number" required>
-                    <option selected value="1人">1人</option>
-                    <option value="2人">2人</option>
-                    <option value="3-5人">3~5人</option>
-                    <option value="6~8人">6~8人</option>
-                    <option value="9~12人">9~12人</option>
-                    <option value="12~20人">12~20人</option>
-                    <option value="21人以上">21人以上</option>
+                  都道府県を入力する
+                  <select name="prefecture" placeholder="都道府県" required>
+                    <option value="北海道">北海道</option>
+                    <option value="青森県">青森県</option>
+                    <option value="岩手県">岩手県</option>
+                    <option value="宮城県">宮城県</option>
+                    <option value="秋田県">秋田県</option>
+                    <option value="山形県">山形県</option>
+                    <option value="福島県">福島県</option>
+                    <option value="茨城県">茨城県</option>
+                    <option value="栃木県">栃木県</option>
+                    <option value="群馬県">群馬県</option>
+                    <option value="千葉県">千葉県</option>
+                    <option value="埼玉県">埼玉県</option>
+                    <option selected value="東京都">東京都</option>
+                    <option value="神奈川県">神奈川県</option>
+                    <option value="新潟県">新潟県</option>
+                    <option value="富山県">富山県</option>
+                    <option value="石川県">石川県</option>
+                    <option value="福井県">福井県</option>
+                    <option value="山梨県">山梨県</option>
+                    <option value="長野県">長野県</option>
+                    <option value="岐阜県">岐阜県</option>
+                    <option value="静岡県">静岡県</option>
+                    <option value="愛知県">愛知県</option>
+                    <option value="三重県">三重県</option>
+                    <option value="滋賀県">滋賀県</option>
+                    <option value="京都府">京都府</option>
+                    <option value="大阪府">大阪府</option>
+                    <option value="奈良県">奈良県</option>
+                    <option value="和歌山県">和歌山県</option>
+                    <option value="兵庫県">兵庫県</option>
+                    <option value="鳥取県">鳥取県</option>
+                    <option value="島根県">島根県</option>
+                    <option value="岡山県">岡山県</option>
+                    <option value="広島県">広島県</option>
+                    <option value="山口県">山口県</option>
+                    <option value="香川県">香川県</option>
+                    <option value="徳島県">徳島県</option>
+                    <option value="愛媛県">愛媛県</option>
+                    <option value="高知県">高知県</option>
+                    <option value="福岡県">福岡県</option>
+                    <option value="佐賀県">佐賀県</option>
+                    <option value="長崎県">長崎県</option>
+                    <option value="大分県">大分県</option>
+                    <option value="熊本県">熊本県</option>
+                    <option value="宮崎県">宮崎県</option>
+                    <option value="鹿児島県">鹿児島県</option>
+                    <option value="沖縄県">沖縄県</option>
+                  </select>
+                  <br>
+                </div>
+                <div>
+                  食べたいものや店の種類を入力する
+                  <select name="food" required>
+                    <option selected value="G001">居酒屋</option>
+                    <option value="G002">ダイニングバー・バル</option>
+                    <option value="G003">創作料理</option>
+                    <option value="G004">和食</option>
+                    <option value="G005">洋食</option>
+                    <option value="G006">イタリアン・フレンチ</option>
+                    <option value="G007">中華</option>
+                    <option value="G008">焼肉・ホルモン</option>
+                    <option value="G009">アジア・エスニック料理</option>
+                    <option value="G010">各国料理</option>
+                    <option value="G011">カラオケ・パーティ</option>
+                    <option value="G012">バー・カクテル</option>
+                    <option value="G013">ラーメン</option>
+                    <option value="G014">カフェ・スイーツ</option>
+                    <option value="G015">その他グルメ</option>
+                    <option value="G016">お好み焼き・もんじゃ</option>
+                    <option value="G017">韓国料理</option>
                   </select><br>
+                </div>
+                <div>
+                  画像を入力する※料理画像で食べたい料理を特定できます！
+                  <input type="file" name="img">
+                  {% if img_path %}
+                  <div>
+                    <img src="{{ img_path }}" style="width: 200px;">
+                  </div>
+                  <p>{{ img_path }}</p>
+                  {% endif %}
+                </div>
+                <div>
+                <label>値段にこだわりたいですか?<input type="checkbox" name="require" value=1></label>
+                  どれくらいお金を使いたいですか?
+                  <input type="text" name="fee" placeholder="値段" required>円 
+                  ディナーに限りますので、ご了承ください<br>
                 </div>
                 <div>
                   何をしたいですか?
                   <select name="purpose" required>
-                    <option selected value="ランチ">ランチ</option>
-                    <option value="ディナー">ディナー</option>
-                    <option value="飲み会">飲み会</option>
-                    <option value="打ち上げ">打ち上げ</option>
-                    <option value="同窓会">同窓会</option>
-                    <option value="合格祝い">合格祝い</option>
-                    <option value="結婚祝い">結婚祝い</option>
-                    <option value="その他">その他</option>
+                    <option selected value=0>飲み会</option>
+                    <option value=1>ランチ</option>
+                    <option value=2>二次会</option>
                   </select><br>
                 </div>
               </ul>
             </p>
             <p>
-              <b>オプション</b>
-              <input type="text" name="fee" placeholder="価格">
-              <select name="feeling">
-                <option selected value="特になし">特になし</option>
-                <option value="がっつり食べたい">がっつり食べたい</option>
-                <option value="あっさりとした感じ">あっさりとした感じ</option>
-                <option value="ダイエットしている">ダイエットしている</option>
-                <option value="9~12人">9~12人</option>
-                <option value="12~20人">12~20人</option>
-                <option value="21人以上">21人以上</option>
-              </select>
-              <input type="text" name="allergy" placeholder="アレルギー">
+            <ul>
+              <b>オプション</b><br>
+                  お酒
+                  <select name="riquid">
+                    <option value=0>特になし</option>
+                    <option value=1>日本酒</option>
+                    <option value=2>ワイン</option>
+                    <option value=3>焼酎</option>
+                    <option value=4>カクテル</option>
+                  </select>
+                  表示件数
+                  <select name="number">
+                    <option value="10">10件</option>
+                    <option selected value="15">15件</option>
+                    <option value="20">20件</option>
+                    <option value="25">25件</option>
+                    <option value="30">30件</option>
+                  </select>
+                  検索範囲
+                  <select name="range">
+                    <option value="1">300m</option>
+                    <option value="2">500m</option>
+                    <option selected value="3">1000m</option>
+                    <option value="4">2000m</option>
+                    <option value="5">3000m</option>
+                  </select>
+                <div>
+                  飲み会のオプション
+                  <label><input type="checkbox" name="custom" value=0>飲み放題</label>
+                  <label><input type="checkbox" name="custom" value=1>食べ放題</label>
+                  <label><input type="checkbox" name="custom" value=2>個室あり</label>
+                  <label><input type="checkbox" name="custom" value=3>掘りごたつあり</label>
+                  <label><input type="checkbox" name="custom" value=4>座敷あり</label>
+                  <label><input type="checkbox" name="custom" value=5>コースあり</label>
+                </div>
+                <div>
+                  配慮
+                  <label><input type="checkbox" name="help" value=1>バリアフリーあり</label>
+                  <label><input type="checkbox" name="help" value=2>駐車場あり</label>
+                  <label><input type="checkbox" name="help" value=3>貸切可</label>
+                  <label><input type="checkbox" name="help" value=4>禁煙席</label>
+                  <label><input type="checkbox" name="help" value=5>カード可</label>
+                  <label><input type="checkbox" name="help" value=6>オープンエアー</label>
+                  <label><input type="checkbox" name="help" value=7>英語メニューあり</label>
+                  <label><input type="checkbox" name="help" value=8>ペット可</label>
+                  <label><input type="checkbox" name="help" value=9>お子様連れOK</label>
+                  <label><input type="checkbox" name="help" value=10>クレジットカード</label>
+                </div>
+                その他オプション
+                  <select name="other">
+                    <option selected value=0>特になし</option>
+                    <option value=1>ソムリエがいる</option>
+                    <option value=2>夜景がキレイ</option>
+                    <option value=3>ライブ・ショーあり</option>
+                    <option value=4>エンタメ設備</option>
+                    <option value=5>23時以降も営業</option>
+                    <option value=6>23時以降食事OK	</option>
+                    <option value=7>カラオケあり</option>
+                    <option value=8>バンド演奏可</option>
+                    <option value=9>TV・プロジェクター</option>
+                  </select>
+              </ul>
             </p>
             <button type="image" formmethod="post">検索</button></p>
           </form>
         </div>
         <p>
           {{info}}<br>
-          {{ output}}
+          <ul>
+          <div class="fontdesign">
+            {% for i in res %}
+              <h2 class="shoptitle">
+                <p><b>{{ i[0] }}</b></p>
+              </h2>
+              <div class="shopdetail">
+                <figure class="logoimage">
+                  <a href={{i[2]}}>
+                    <img src={{i[4]}} alt={{i[0]}} >
+                  </a>
+                </figure>
+                <p class="detailtext">
+                  住所: {{ i[1] }}<br>
+                  平均費用: {{ i[3] }}<br>
+                  アクセス方法: {{ i[6] }}<br>
+                  営業時間: {{i[7]}}<br>
+                  定休日: {{i[8]}}<br>
+                  
+                  URL: <a href={{i[2]}}>{{i[2]}}</a><br>
+                  <b>{{i[10]}}</b><br>
+                </p>
+              </div>
+                
+            {% endfor %}
+            </div>
+          </ul>
         </p>
       </p>
-    </div>
-    
-  <!-- ボタンを押すと、/に飛ぶ -->
-  <div class="background">
-    <form action="/" method="get">
-      <div class="buttondesign">
-        <input type="image" value='back!' src="../pictures/Button2.png">
-      </div>
-    </form>
-  </div>
+    </body>
   
-  </body>
+
 </html>

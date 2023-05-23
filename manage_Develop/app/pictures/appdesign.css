@@ -9,12 +9,12 @@
 }
 
 .inputsentence{
-    font-size: 30;
+    font-size: 15px;
 }
 
 .inputsentence2{
     text-align: center;
-    font-size: 40;
+    font-size: 15px;
 }
 
 .buttondesign2 {
@@ -24,7 +24,6 @@
  
 
 .buttondesign {
-    position: absolute;
     width: 550px;
     height: 130px;
  }
@@ -33,3 +32,26 @@
     width: 30%;
     height: 30%;
 }
+
+.shops{
+    position: relative;
+}
+
+.shoptitle{
+    font-size: 25px;
+    color: #2EC0A6 ;
+}
+
+.shopdetail{
+    display: flex;
+    justify-content: space-around;
+}
+
+.logoimage {
+    margin: 0px 20px 0px 0px;
+    overflow: hidden;
+    position: relative;
+  }
+.detailtext {
+    margin: 0px 0px 0px 20px;
+  }
