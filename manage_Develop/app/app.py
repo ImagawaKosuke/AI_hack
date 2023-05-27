@@ -137,7 +137,7 @@ def HotpepperAPI(lat,lng,liquid,foodcode,number,range,purposes,custom,help,other
     shop_datas=[]
     count=0
     for shop_data in result_list:
-        shop_datas.append([shop_data["name"],shop_data["address"],shop_data["urls"]['pc'], shop_data["budget"]['average'],shop_data['logo_image'], shop_data['genre']['name'],shop_data['access'],shop_data['open'],shop_data['close'],'Hotpepper', shop_data['catch']])
+        shop_datas.append([shop_data["name"],shop_data["address"],shop_data["urls"]['pc'], shop_data["budget"]['average'],shop_data['logo_image'], shop_data['genre']['name'],shop_data['access'],shop_data['open'],shop_data['close'],'Hotpepper', shop_data['catch'], shop_data['genre']['name']])
         # 0:店名, 1:住所 2:URL 3:費用 4:画像 5:ジャンル名 6:アクセス 7:営業時間 8:定休日 9:ホットペッパー 10:説明
         count+=1
     
@@ -157,6 +157,8 @@ def Answer(question):
     response = completion.choices[0].message.content
 
     return response
+
+
 
 app = Flask(__name__, static_folder='/')
 
@@ -178,6 +180,58 @@ def modify_array(answer):
                 explanations.append(sentence)
             
     return explanations
+
+#画像を基にジャンルを決める
+def judgement_genre(description, score):
+    judgement = "G001"
+    if("Food" in description and score[description.index("Food")]):
+        judgement = "G001"
+        #イタリアン(パスタ)
+        if(("Noodle" in description)or ("Al dente" in description)) and ("Pasta" in description):
+            judgement = "G006"
+        elif("Noodle" in description):
+            if("Chinese noodles" in description):
+                judgement = "G013"
+            elif("Rice noodles" in description or "Staple food" in description):
+                judgement = "G004"
+            else:
+                judgement = "G015"
+        #和食
+        elif(("White rice" in description and "Fish slice" in description) or "Sushi" in description):
+            judgement = "G004"
+        elif("Seafood" in description):
+            judgement = "G004"
+        #イタリアン・フレンチ
+        elif("Pizza" in description):
+            judgement = "G006"
+        #カフェ・スイーツ
+        elif("Cake" in description or "Coffee" in description or "Fruit" in description):
+            judgement = "G014"
+        elif("Ice cream" in description or "Frozen dessert" in description):
+            judgement = "G014"
+        #洋食
+        elif("Fried food" in description or "French fries" in description or "Sandwich" in description or "Deep frying" in description):
+            judgement = "G005"
+        elif("Steak" in description or "Carne asada" in description):
+            judgement = "G005"
+        elif("Plate" in description and "Fast food" in description):
+            judgement = "G005"
+        elif("Stew" in description and not "Fast food" in description):
+            judgement = "G005"
+        #中華
+        elif("Jeon" in description or "Dumpling" in description or "Mandu"  in description):
+            judgement = "G007"
+        #焼肉・ホルモン
+        elif(("Meat" in description or "Pork" in description) and ("Roasting" in description or "Cooking" in description)):
+            judgement = "G008"
+        #お好み焼き・もんじゃ
+        elif("Monjayaki" in description):
+            judgement = "G016"
+        #バー・カクテル
+        elif("Liquid" in description or "Wine glass" in description  or "Wine" in description):
+            judgement = "G012"
+
+    return judgement
 
 #「/」へアクセスがあった場合に、"Hello World"の文字列を返す
 @app.route("/")
@@ -265,7 +319,6 @@ def require():
         stream = request.files['img'].stream
         
         img_array = np.asarray(bytearray(stream.read()), dtype=np.uint8)
-        print(img_array)
         if len(img_array)!=0:
             img = cv2.imdecode(img_array, 1)
             #### 現在時刻を名前として「imgs/」に保存する
@@ -279,10 +332,16 @@ def require():
 
             response = client.label_detection(image=image)
             labels = response.label_annotations
-            
+            #output = judge_image(labels)
+            descriptions = []
+            scores = []
             for label in labels:
-                print(label.description + ":" + str(label.score))
-
+                #print(label.description + ":" + str(label.score))
+                descriptions.append(label.description)
+                scores.append(label.score)
+            post2 = judgement_genre(descriptions,scores)            
+            #print(descriptions,scores)
+            
         #お酒が充実しているか
         liquid = [0,0,0,0]
         if(post6==0):
@@ -365,12 +424,15 @@ def require():
         explanations = modify_array(explanation)
         if(len(explanations)==searchcount):
             for i in range(searchcount):
-                responce[i][10] = explanations[i]
+                if(len(explanations[i])!=0):
+                    responce[i][10] = explanations[i]
 
         purposelist = ["飲み会", "ランチ","二次会"]
         purposejudge = purposelist[int(post4)]
-        information = "検索情報\n"+"場所: "+ str(post5) + " "+ str(post1)+ "駅 目的: " + purposejudge+ "\n"
-        if(res_len==0):
+        information = "検索情報\n"+"・場所: "+ str(post5) + " "+ str(post1)+ "駅 ・目的: " + purposejudge
+        if(res_len!=0):
+            information = information + "・ジャンル:"+ str(responce[0][11]) +"\n"
+        else:
             information +="以上の条件を基にしたデータは見つかりませんでした。"
     return render_template('next_index.html', info= information, res=responce) 
 
